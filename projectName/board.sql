@@ -1,0 +1,12 @@
+CREATE TABLE tbl_board(
+bno NUMBER,
+title VARCHAR2(60) NOT NULL,
+content VARCHAR2(3000) NOT NULL,
+writer VARCHAR2(15) NOT NULL,
+regdate DATE DEFAULT SYSDATE,
+updatedate DATE DEFAULT SYSDATE,
+viewcnt NUMBER DEFAULT 0,
+CONSTRAINT pk_board_bno PRIMARY KEY(bno)
+)
+
+select * from TBL_BOARD

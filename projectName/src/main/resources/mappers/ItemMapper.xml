@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.item">
+
+	<select id="searchByName" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM tbl_item
+		WHERE
+		UPPER(itemname) LIKE '%'||UPPER(#{itemname})||'%'
+	</select>
+
+	<select id="list" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM tbl_item
+	</select>
+
+	<delete id="delete">
+		DELETE FROM tbl_item
+		WHERE
+		itemid = #{itemid}
+	</delete>
+
+	<update id="update">
+		UPDATE tbl_item SET itemname = #{itemname}, itemprice
+		= #{itemprice}, itemcount = #{itemcount}
+		WHERE
+		itemid = #{itemid}
+	</update>
+
+	<select id="updateUI" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM tbl_item
+		WHERE
+		itemid = #{itemid}
+	</select>
+
+	<select id="read" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM tbl_item
+		WHERE
+		itemid =
+		#{itemid}
+	</select>
+
+	<insert id="insertItem">
+		INSERT INTO tbl_item (itemid, itemname, itemprice,
+		itemcount, userid)
+		VALUES
+		(#{itemid}, #{itemname}, #{itemprice},
+		#{itemcount}, #{userid})
+	</insert>
+
+</mapper>
